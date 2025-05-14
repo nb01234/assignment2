@@ -21,4 +21,23 @@ public class Time {
         this.mins=0;
         this.secs=0;
     }
+    public int getTotalHours(){
+        if (secs>30){
+            mins=mins+(secs/60)+1;
+        }
+        if (mins>30){
+            hours=hours+(mins/60)+1;
+        }
+        return hours;
+    }
+    public int  getTotalMinutes(){
+        
+    }
+    public int  getTotalSeconds(){
+        
+    }
+    public String toString(){
+        
+    }
+
 }
