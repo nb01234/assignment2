@@ -7,6 +7,6 @@
  *
  * @author 345467385
  */
-public class NewClass {
+public class Time {
     
 }
