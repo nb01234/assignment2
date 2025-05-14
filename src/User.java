@@ -10,11 +10,33 @@
 public class User {
     private String name;
     private int age;
-    private static String DEFAULT_NAME = "Unkown";
     private static int DEFAULT_AGE = 0;
     private static int numPeopele = 0;
     
     public User(String name, int age) {
-        
+        this.name = name;
+        this.age = age;
     }
+    
+    public User(String name) {
+        this.name = name;
+        this.age = DEFAULT_AGE;
+    }
+    
+    public String getName() {
+        return name;
+    }
+    
+    public void setName(String name) {
+        this.name = name;
+    }
+    
+    public int getAge() {
+        return age;
+    }
+    
+    public void setAge(int age) {
+        this.age = age;
+    }
+    
 }
