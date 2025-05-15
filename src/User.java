@@ -16,11 +16,13 @@ public class User {
     public User(String name, int age) {
         this.name = name;
         this.age = age;
+        numPeople++;
     }
     
     public User(String name) {
         this.name = name;
         this.age = DEFAULT_AGE;
+        numPeople++;
     }
     
     public String getName() {
@@ -37,6 +39,14 @@ public class User {
     
     public void setAge(int age) {
         this.age = age;
+    }
+    
+    public int getNumPeople() {
+        return numPeople;
+    }
+    
+    public String toString() {
+        return "Name: " + name + "Age: " + age; 
     }
     
 }
