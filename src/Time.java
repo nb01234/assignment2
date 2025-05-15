@@ -22,22 +22,33 @@ public class Time {
         this.secs=0;
     }
     public int getTotalHours(){
-        if (secs>30){
+        if ((secs%60)>30){
             mins=mins+(secs/60)+1;
+        }else{
+            mins=mins+(secs/60);
         }
-        if (mins>30){
+        if ((mins%60)>30){
             hours=hours+(mins/60)+1;
+        }else{
+            hours=hours+(mins/60);
         }
         return hours;
     }
-    public int  getTotalMinutes(){
-        
+    public int getTotalMinutes(){
+        if ((secs%60)>30){
+            mins=mins+(secs/60)+1;
+        }else{
+            mins=mins+(secs/60);
+        }
+        mins=hours*60;
+        return mins;
     }
-    public int  getTotalSeconds(){
-        
+    public int getTotalSeconds(){
+        secs=(mins+(hours*60))*60;
+        return secs;
     }
+    @Override
     public String toString(){
-        
+        return hours+";"+mins+";"+secs;
     }
-
 }
