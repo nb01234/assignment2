@@ -16,8 +16,11 @@ public class Student extends User{
         this.studyHours = studyHours;
     }
     
-    public Student(String name, int age, double studyHours) {
-        super(name, age);
+    public double getStudyHours() {
+        return studyHours;
+    }
+    
+    public void setStudyHours(double studyHours) {
         this.studyHours = studyHours;
     }
 }

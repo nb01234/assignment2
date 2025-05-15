@@ -11,7 +11,7 @@ public class User {
     private String name;
     private int age;
     private static int DEFAULT_AGE = 0;
-    private static int numPeopele = 0;
+    private static int numPeople = 0;
     
     public User(String name, int age) {
         this.name = name;
