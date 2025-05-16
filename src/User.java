@@ -11,20 +11,14 @@ public class User {
     private String name;
     private int age;
     private int score;
-    private static int DEFAULT_AGE = 0;
+    private Time time;
     private static int DEFAULT_SCORE = 0;
     private static int numPeople = 0;
     
-    public User(String name, int age) {
+    public User(String name, int age, Time time) {
         this.name = name;
         this.age = age;
-        this.score = DEFAULT_SCORE;
-        numPeople++;
-    }
-    
-    public User(String name) {
-        this.name = name;
-        this.age = DEFAULT_AGE;
+        this.Time = time;
         this.score = DEFAULT_SCORE;
         numPeople++;
     }
@@ -43,6 +37,14 @@ public class User {
     
     public void setAge(int age) {
         this.age = age;
+    }
+    
+    public int getScore() {
+        return score;
+    }
+    
+    public void setScore(int score) {
+        this.score = score;
     }
     
     public int getScore() {
