@@ -12,13 +12,13 @@ public class User {
     private int age;
     private int score;
     private Time time;
-    private static int DEFAULT_SCORE = 0;
+    private static final int DEFAULT_SCORE = 0;
     private static int numPeople = 0;
     
     public User(String name, int age, Time time) {
         this.name = name;
         this.age = age;
-        this.Time = time;
+        this.time = time;
         this.score = DEFAULT_SCORE;
         numPeople++;
     }
@@ -47,12 +47,12 @@ public class User {
         this.score = score;
     }
     
-    public int getScore() {
-        return score;
+     public Time getTime() {
+        return time;
     }
     
-    public void setScore(int score) {
-        this.score = score;
+    public void setTime(Time time) {
+        this.time = time;
     }
     
     public int getNumPeople() {
