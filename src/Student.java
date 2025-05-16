@@ -17,6 +17,7 @@ public class Student extends User{
         super(name, age);
         this.score = DEFAULT_SCORE;
         this.studyHours = studyHours;
+        increment();
     }
     
     public double getStudyHours() {
@@ -26,7 +27,7 @@ public class Student extends User{
     public void setStudyHours(double studyHours) {
         this.studyHours = studyHours;
     }
-        
+    
     public int getScore() {
         return score;
     }

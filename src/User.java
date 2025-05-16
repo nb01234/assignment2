@@ -57,6 +57,10 @@ public class User {
         return numPeople;
     }
     
+    protected static void increment() {
+        numPeople++;
+    }
+    
     public String toString() {
         return "Name: " + name + "Age: " + age; 
     }
