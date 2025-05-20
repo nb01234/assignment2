@@ -10,11 +10,12 @@
  */
 public class Student extends User{
     private int score;
+    //private Time time;
     private static int DEFAULT_SCORE = 0;
     private double studyHours = 0;
     
-    public Student(String name, int age, double studyHours) {
-        super(name, age);
+    public Student(String name, int age, double studyHours, Time time) {
+        super(name, age, time);
         this.score = DEFAULT_SCORE;
         this.studyHours = studyHours;
         increment();
@@ -35,7 +36,8 @@ public class Student extends User{
     public void setScore(int score) {
         this.score = score;
     }
- 
+    
+    @Override
     public String toString() {
         return "Name: " + getName() + "Age: " + getAge() + "Daily Study Hours: " + getStudyHours(); 
     }

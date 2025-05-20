@@ -15,4 +15,8 @@ public class Scoreboard {
     public Scoreboard(ArrayList<User> user) {
         this.user = user;
     }
+    
+    public void displayUsers() {
+        
+    }
 }
