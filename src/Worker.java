@@ -7,6 +7,6 @@
  *
  * @author 342468766
  */
-public class Adult {
+public class Worker {
     
 }
