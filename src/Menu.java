@@ -90,7 +90,7 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.setVisible(false);
         
-        new Analyser().setVisible(true);
+        new UserAnalyser().setVisible(true);
     }//GEN-LAST:event_startActionPerformed
 
     private void scoreboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scoreboardActionPerformed
