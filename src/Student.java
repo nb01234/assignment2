@@ -49,6 +49,7 @@ public class Student extends User {
 
        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
           String line;
+          int i = 0;
           while ((line = reader.readLine()) != null) {
             String data[] = line.split(",");
             String name = data[0];
@@ -63,6 +64,7 @@ public class Student extends User {
             double studyHours = Double.parseDouble(data[3]);
 
             students.add(new Student(name, age, studyHours, time));
+            i++;
           }
       } catch (IOException ioException) {
           System.out.println("Java Exception: " + ioException);

@@ -156,6 +156,20 @@ public class Menu extends javax.swing.JFrame {
 
     private void startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startActionPerformed
         // TODO add your handling code here:
+         // receive users name
+        String username = name.getText();
+    
+        // error check username
+        if (username.isEmpty() || username.contains("INVALID")) {
+            name.setText("INVALID");
+        } else {
+            // write users name into file
+            try (FileWriter writer = new FileWriter("scores.txt", true)) {
+                writer.write(username);
+            } catch (IOException ioException) {
+                System.err.println("Java Exception: " + ioException);
+            }
+        
         this.setVisible(false);
         
         new UserAnalyser().setVisible(true);
