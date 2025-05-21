@@ -1,3 +1,6 @@
+import java.io.FileWriter;
+import java.io.IOException;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -156,19 +159,15 @@ public class Menu extends javax.swing.JFrame {
 
     private void startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startActionPerformed
         // TODO add your handling code here:
-         // receive users name
-        String username = name.getText();
+        String userName = name.getText();
+        String userAge = age.getText();
     
-        // error check username
-        if (username.isEmpty() || username.contains("INVALID")) {
-            name.setText("INVALID");
-        } else {
-            // write users name into file
-            try (FileWriter writer = new FileWriter("scores.txt", true)) {
-                writer.write(username);
-            } catch (IOException ioException) {
-                System.err.println("Java Exception: " + ioException);
-            }
+        try (FileWriter writer = new FileWriter("users.txt", true)) {
+            writer.write(userName);
+            writer.write(userAge);
+        } catch (IOException ioException) {
+            System.err.println("Java Exception: " + ioException);
+        }
         
         this.setVisible(false);
         

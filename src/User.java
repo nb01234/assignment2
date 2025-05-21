@@ -72,11 +72,12 @@ public class User {
         return "Name: " + name + "Age: " + age; 
     }
     
-      public static ArrayList<User> readFromFile(String fileName) {
+    public static ArrayList<User> readFromFile(String fileName) {
        ArrayList <User> users = new ArrayList<>();
 
-       try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+       try (BufferedReader reader = new BufferedReader(new FileReader("users.txt"))) {
           String line;
+          int i = 0;
           while ((line = reader.readLine()) != null) {
             String data[] = line.split(",");
             String name = data[0];
@@ -89,6 +90,8 @@ public class User {
             Time time = new Time(hours, minutes, seconds);
             
             users.add(new User(name, age, time));
+            
+            i++;
           }
       } catch (IOException ioException) {
           System.out.println("Java Exception: " + ioException);

@@ -44,10 +44,10 @@ public class Student extends User {
         return "Name: " + getName() + "Age: " + getAge() + "Daily Study Hours: " + getStudyHours(); 
     }
     
-    public static ArrayList<Student> readFromFile(String fileName) {
-       ArrayList <Student> students = new ArrayList<>();
+    public static ArrayList<User> readFromFile(String fileName) {
+       ArrayList <User> users = new ArrayList<>();
 
-       try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+       try (BufferedReader reader = new BufferedReader(new FileReader("users.txt"))) {
           String line;
           int i = 0;
           while ((line = reader.readLine()) != null) {
@@ -63,12 +63,12 @@ public class Student extends User {
             
             double studyHours = Double.parseDouble(data[3]);
 
-            students.add(new Student(name, age, studyHours, time));
+            users.add(new Student(name, age, studyHours, time));
             i++;
           }
       } catch (IOException ioException) {
           System.out.println("Java Exception: " + ioException);
       }
-        return students;
+        return users;
       }
 }
