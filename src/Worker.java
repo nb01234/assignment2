@@ -18,7 +18,7 @@ public class Worker extends User {
     private static final int DEFAULT_SCORE = 0;
     private double workHours = 0;
     
-    public Worker(String name, int age, double studyHours, Time time) {
+    public Worker(String name, int age, double workHours, Time time) {
         super(name, age, time);
         this.score = DEFAULT_SCORE;
         this.workHours = workHours;
@@ -48,7 +48,7 @@ public class Worker extends User {
     public static ArrayList<User> readFromFile(String fileName) {
        ArrayList <User> users = new ArrayList<>();
 
-       try (BufferedReader reader = new BufferedReader(new FileReader("users.txt"))) {
+       try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
           String line;
           int i = 0;
           while ((line = reader.readLine()) != null) {

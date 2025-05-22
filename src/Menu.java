@@ -12,11 +12,15 @@ import java.io.IOException;
  */
 public class Menu extends javax.swing.JFrame {
 
+    private boolean student;
+    private boolean worker;
+    
     /**
      * Creates new form NewJFrame
      */
     public Menu() {
         initComponents();
+        
     }
 
     /**
@@ -36,8 +40,8 @@ public class Menu extends javax.swing.JFrame {
         name = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         age = new javax.swing.JTextField();
-        student = new javax.swing.JCheckBox();
-        worker = new javax.swing.JCheckBox();
+        studentCheck = new javax.swing.JCheckBox();
+        workerCheck = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -77,19 +81,19 @@ public class Menu extends javax.swing.JFrame {
 
         age.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
 
-        student.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
-        student.setText("Student");
-        student.addActionListener(new java.awt.event.ActionListener() {
+        studentCheck.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
+        studentCheck.setText("Student");
+        studentCheck.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                studentActionPerformed(evt);
+                studentCheckActionPerformed(evt);
             }
         });
 
-        worker.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
-        worker.setText("Worker");
-        worker.addActionListener(new java.awt.event.ActionListener() {
+        workerCheck.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
+        workerCheck.setText("Worker");
+        workerCheck.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                workerActionPerformed(evt);
+                workerCheckActionPerformed(evt);
             }
         });
 
@@ -111,21 +115,19 @@ public class Menu extends javax.swing.JFrame {
                             .addComponent(scoreboard, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(start, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(24, 24, 24)
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(age, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(42, 42, 42)
-                                .addComponent(student)
-                                .addGap(26, 26, 26)
-                                .addComponent(worker)))))
+                        .addContainerGap()
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(24, 24, 24)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(age, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(79, 79, 79)
+                        .addComponent(studentCheck)
+                        .addGap(26, 26, 26)
+                        .addComponent(workerCheck)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -149,8 +151,8 @@ public class Menu extends javax.swing.JFrame {
                     .addComponent(age, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(student)
-                    .addComponent(worker))
+                    .addComponent(studentCheck)
+                    .addComponent(workerCheck))
                 .addContainerGap(28, Short.MAX_VALUE))
         );
 
@@ -161,17 +163,24 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
         String userName = name.getText();
         String userAge = age.getText();
+        boolean student = studentCheck.isSelected();
+        boolean worker = workerCheck.isSelected();
     
         try (FileWriter writer = new FileWriter("users.txt", true)) {
-            writer.write(userName);
-            writer.write(userAge);
+            writer.write(userName + "," + userAge);
         } catch (IOException ioException) {
             System.err.println("Java Exception: " + ioException);
         }
         
         this.setVisible(false);
         
-        new UserAnalyser().setVisible(true);
+        if (student) {
+            new StudentAnalyser().setVisible(true);
+        } else if (worker) {
+            new WorkerAnalyser().setVisible(true);
+        } else {
+            new UserAnalyser().setVisible(true);
+        }
     }//GEN-LAST:event_startActionPerformed
 
     private void scoreboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scoreboardActionPerformed
@@ -185,13 +194,13 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_nameActionPerformed
 
-    private void studentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentActionPerformed
+    private void studentCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentCheckActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_studentActionPerformed
+    }//GEN-LAST:event_studentCheckActionPerformed
 
-    private void workerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_workerActionPerformed
+    private void workerCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_workerCheckActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_workerActionPerformed
+    }//GEN-LAST:event_workerCheckActionPerformed
 
     /**
      * @param args the command line arguments
@@ -240,7 +249,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JTextField name;
     private javax.swing.JButton scoreboard;
     private javax.swing.JButton start;
-    private javax.swing.JCheckBox student;
-    private javax.swing.JCheckBox worker;
+    private javax.swing.JCheckBox studentCheck;
+    private javax.swing.JCheckBox workerCheck;
     // End of variables declaration//GEN-END:variables
 }

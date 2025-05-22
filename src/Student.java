@@ -47,7 +47,7 @@ public class Student extends User {
     public static ArrayList<User> readFromFile(String fileName) {
        ArrayList <User> users = new ArrayList<>();
 
-       try (BufferedReader reader = new BufferedReader(new FileReader("users.txt"))) {
+       try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
           String line;
           int i = 0;
           while ((line = reader.readLine()) != null) {
