@@ -69,14 +69,14 @@ public class Scores extends javax.swing.JFrame {
 
         // display third most recent score
         if (lineCount >= 4) {
-            score4.setText(lines[lineCount - 3]);
+            score4.setText(lines[lineCount - 4]);
         } else {
             score4.setText("");
         }    
 
         // display third most recent score
         if (lineCount >= 5) {
-            score5.setText(lines[lineCount - 3]);
+            score5.setText(lines[lineCount - 5]);
         } else {
             score5.setText("");
         }    
