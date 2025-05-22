@@ -227,49 +227,22 @@ public class UserAnalyser extends javax.swing.JFrame {
 
     private void calculateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calculateActionPerformed
         // TODO add your handling code here:
-        String hours = hours.getText();
-        String userMinutes = minutes.getText();
-        String userSeconds = seconds.getText();
-        String userNumBreaks = numberOfBreaks.getText();
-        String userLengthBreaks = lengthOfBreaks.getText();
-        String userTimeBed = timeInBed.getText();
+        //String hours = hours.getText();
+        //String userMinutes = minutes.getText();
+        //String userSeconds = seconds.getText();
+        //String userNumBreaks = numberOfBreaks.getText();
+        //String userLengthBreaks = lengthOfBreaks.getText();
+        //String userTimeBed = timeInBed.getText();
 
-        int userHours = Integer.parseInt(hours);
+        //int userHours = Integer.parseInt(hours);
         
-        try (FileWriter writer = new FileWriter("users.txt", true)) {
-            writer.write(userHours + ", " + userMinutes + ", " + userSeconds);
-        } catch (IOException ioException) {
-            System.err.println("Java Exception: " + ioException);
-        }
+        //try (FileWriter writer = new FileWriter("users.txt", true)) {
+            //writer.write(userHours + ", " + userMinutes + ", " + userSeconds);
+        //} catch (IOException ioException) {
+            //System.err.println("Java Exception: " + ioException);
+        //}
         
-        double percent = userNumBreaks * userLengthBreaks / hours;
-        int score = 0;
-       
-        // score out of 5 based on how much the user took breaks
-        if (percent < 0.02) {
-            score = 0;
-        } else if (percent < 0.04) {
-            score = 1;
-        } else if (percent < 0.06) {
-            score = 2;
-        } else if (percent < 0.08) {
-            score = 3;
-        } else if (percent < 0.1) {
-            score = 4;
-        } else {
-            score = 5;
-        }
-       
-        return score;
-    }
-
-        //calculate score
-        if (!invalid) {
-            breakSc = calculatePartScore(screenHours, numBreaks, lengthBreak); // maximal 5 points for taking breaks
-            Double l = 10 - screenHours + 5 - timeBed + breakSc; // max score is 20, score can be negative
-            score = (int) Math.round(l); // round score and convert to an int
-        }
-
+        
     }//GEN-LAST:event_calculateActionPerformed
 
     /**
