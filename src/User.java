@@ -28,6 +28,10 @@ public class User {
         numPeople++;
     }
     
+    public User() {
+        
+    }
+    
     public String getName() {
         return name;
     }

@@ -131,23 +131,23 @@ public class Scores extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel6.setText("5)");
 
-        score4.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        score4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         score4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         score4.setText("???");
 
-        score5.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        score5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         score5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         score5.setText("???");
 
-        score1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        score1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         score1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         score1.setText("???");
 
-        score2.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        score2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         score2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         score2.setText("???");
 
-        score3.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        score3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         score3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         score3.setText("???");
 
@@ -188,27 +188,24 @@ public class Scores extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jButton1)))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(0, 0, 0)
-                        .addComponent(jLabel3)
-                        .addGap(0, 0, 0)
-                        .addComponent(jLabel4)
-                        .addGap(1, 1, 1)
-                        .addComponent(jLabel5)
-                        .addGap(0, 0, 0)
-                        .addComponent(jLabel6))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(score1)
-                        .addGap(0, 0, 0)
-                        .addComponent(score2)
-                        .addGap(0, 0, 0)
-                        .addComponent(score3)
-                        .addGap(1, 1, 1)
-                        .addComponent(score4)
-                        .addGap(0, 0, 0)
-                        .addComponent(score5)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(score1))
+                .addGap(0, 0, 0)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(score2))
+                .addGap(0, 0, 0)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(score3))
+                .addGap(1, 1, 1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(score4))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(score5))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 

@@ -157,6 +157,8 @@ public class Menu extends javax.swing.JFrame {
 
     private void startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startActionPerformed
         // TODO add your handling code here:
+        User user = new User();
+        
         String userName = name.getText();
         String userAge = age.getText();
         boolean student = studentCheck.isSelected();
