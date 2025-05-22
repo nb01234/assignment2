@@ -1,4 +1,3 @@
-
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -34,7 +33,7 @@ public class UserAnalyser extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        calculate = new javax.swing.JButton();
         minutes = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         hours = new javax.swing.JTextField();
@@ -65,8 +64,13 @@ public class UserAnalyser extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel5.setText("Seconds:");
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jButton1.setText("Calculate");
+        calculate.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        calculate.setText("Calculate");
+        calculate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                calculateActionPerformed(evt);
+            }
+        });
 
         minutes.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
@@ -145,7 +149,7 @@ public class UserAnalyser extends javax.swing.JFrame {
                                         .addComponent(jLabel11)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(score, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jButton1)))
+                                    .addComponent(calculate)))
                             .addComponent(jLabel1)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel3)
@@ -195,7 +199,7 @@ public class UserAnalyser extends javax.swing.JFrame {
                             .addComponent(jLabel10)
                             .addComponent(timeInBed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(26, 26, 26)
-                        .addComponent(jButton1)
+                        .addComponent(calculate)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel11)
@@ -220,6 +224,19 @@ public class UserAnalyser extends javax.swing.JFrame {
 
         new Menu().setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void calculateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calculateActionPerformed
+        // TODO add your handling code here:
+        String userHours = hours.getText();
+        String userMinutes = minutes.getText();
+        String userSeconds = seconds.getText();
+        
+        try (FileWriter writer = new FileWriter("users.txt", true)) {
+            writer.write(userHours + ", " + userMinutes + ", " + userSeconds);
+        } catch (IOException ioException) {
+            System.err.println("Java Exception: " + ioException);
+        }
+    }//GEN-LAST:event_calculateActionPerformed
 
     /**
      * @param args the command line arguments
@@ -258,8 +275,8 @@ public class UserAnalyser extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton calculate;
     private javax.swing.JTextField hours;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
