@@ -229,6 +229,7 @@ public class UserAnalyser extends javax.swing.JFrame {
         // TODO add your handling code here:
             
         int finalScore = 0;
+        boolean invalid;
 
         String getHours = hours.getText();
         String getMinutes = minutes.getText();
@@ -246,6 +247,12 @@ public class UserAnalyser extends javax.swing.JFrame {
 
         int percent = userNumBreaks * userLengthBreaks / userHours;
         int partScore = 0;
+        
+        if (userHours > 24 || userTimeBed > 12 || userTimeBed > userHours) {
+            invalid = true;
+        } else {
+            invalid = false;
+        }
 
         // score out of 5 based on how much the user took breaks
         if (percent < 0.02) {
@@ -265,10 +272,15 @@ public class UserAnalyser extends javax.swing.JFrame {
         //calculate score
         int l = 10 - userHours + 5 - userTimeBed + partScore; // max score is 20, score can be negative
         finalScore = (int) Math.round(l); // round score and convert to an int
+            
         
         try (FileWriter writer = new FileWriter("users.txt", true)) {
-            writer.write(userHours + ", " + userMinutes + ", " + userSeconds + ", " + finalScore);
-            score.setText(String.valueOf(finalScore));
+            if (!invalid) {
+                writer.write(userHours + ", " + userMinutes + ", " + userSeconds + ", " + finalScore);
+                score.setText(String.valueOf(finalScore));
+            } else {
+                score.setText("Invalid input entered");
+            }
         } catch (IOException ioException) {
             System.err.println("Java Exception: " + ioException);
         }
