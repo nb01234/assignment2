@@ -11,10 +11,6 @@ import java.io.IOException;
  * @author 342628146
  */
 public class Menu extends javax.swing.JFrame {
-
-    private boolean student;
-    private boolean worker;
-    
     /**
      * Creates new form NewJFrame
      */
