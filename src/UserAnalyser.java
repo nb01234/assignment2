@@ -38,7 +38,6 @@ public class UserAnalyser extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         hours = new javax.swing.JTextField();
         lengthOfBreaks = new javax.swing.JTextField();
-        score = new javax.swing.JTextField();
         seconds = new javax.swing.JTextField();
         timeInBed = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -47,6 +46,7 @@ public class UserAnalyser extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         numberOfBreaks = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
+        score = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -79,13 +79,6 @@ public class UserAnalyser extends javax.swing.JFrame {
 
         hours.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
-        score.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        score.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                scoreActionPerformed(evt);
-            }
-        });
-
         seconds.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         seconds.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -111,6 +104,9 @@ public class UserAnalyser extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
+
+        score.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        score.setText("jLabel6");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -143,13 +139,7 @@ public class UserAnalyser extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(139, 139, 139)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(6, 6, 6)
-                                        .addComponent(jLabel11)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(score, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(calculate)))
+                                .addComponent(calculate))
                             .addComponent(jLabel1)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel3)
@@ -162,7 +152,12 @@ public class UserAnalyser extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(seconds, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(seconds, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(121, 121, 121)
+                                .addComponent(jLabel11)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(score)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -203,16 +198,12 @@ public class UserAnalyser extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel11)
-                            .addComponent(score, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(score))
                         .addContainerGap())))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void scoreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scoreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_scoreActionPerformed
 
     private void secondsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_secondsActionPerformed
         // TODO add your handling code here:
@@ -341,7 +332,7 @@ public class UserAnalyser extends javax.swing.JFrame {
     private javax.swing.JTextField lengthOfBreaks;
     private javax.swing.JTextField minutes;
     private javax.swing.JTextField numberOfBreaks;
-    private javax.swing.JTextField score;
+    private javax.swing.JLabel score;
     private javax.swing.JTextField seconds;
     private javax.swing.JTextField timeInBed;
     // End of variables declaration//GEN-END:variables
