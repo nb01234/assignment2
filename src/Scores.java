@@ -58,27 +58,27 @@ public class Scores extends javax.swing.JFrame {
         if (lineCount >= 2) {
             score2.setText(lines[lineCount - 2]);
         } else {
-            score2.setText("???");
+            score2.setText("");
         }
         // display third most recent score
         if (lineCount >= 3) {
             score3.setText(lines[lineCount - 3]);
         } else {
-            score3.setText("???");
+            score3.setText("");
         }    
 
         // display third most recent score
         if (lineCount >= 4) {
             score4.setText(lines[lineCount - 3]);
         } else {
-            score4.setText("???");
+            score4.setText("");
         }    
 
         // display third most recent score
         if (lineCount >= 5) {
             score5.setText(lines[lineCount - 3]);
         } else {
-            score5.setText("???");
+            score5.setText("");
         }    
     }
 
