@@ -1,3 +1,7 @@
+import java.io.File;
+import java.io.IOException;
+import java.util.Scanner;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -14,6 +18,68 @@ public class Scores extends javax.swing.JFrame {
      */
     public Scores() {
         initComponents();
+        
+        // initialize line count
+        int lineCount = 0;
+
+        // count number of lines
+        try {
+            Scanner fileInput = new Scanner(new File("users.txt"));
+            while (fileInput.hasNextLine()) {
+                fileInput.nextLine();
+                lineCount++;
+            }
+        } catch (IOException ioException) {
+            System.err.println("Java Exception: " + ioException);
+        } 
+        
+        // initalize lines array
+        String[] lines = new String [lineCount];
+        int index = 0;
+        
+        // add values from scores file into the array
+        try {
+            Scanner fileInput = new Scanner(new File("users.txt"));
+            while (fileInput.hasNextLine()) {
+                lines[index] = fileInput.nextLine();
+                index++;
+            }
+        } catch (IOException ioException) {
+            System.err.println("Java Exception: " + ioException);
+        }    
+        
+        // display most recent score
+        if (lineCount >= 1) {
+            score1.setText(lines[lineCount - 1]);
+        } else {
+            score1.setText("???");
+        }
+        // display second most recent score
+        if (lineCount >= 2) {
+            score2.setText(lines[lineCount - 2]);
+        } else {
+            score2.setText("???");
+        }
+        // display third most recent score
+        if (lineCount >= 3) {
+            score3.setText(lines[lineCount - 3]);
+        } else {
+            score3.setText("???");
+        }    
+
+        // display third most recent score
+        if (lineCount >= 4) {
+            score4.setText(lines[lineCount - 3]);
+        } else {
+            score4.setText("???");
+        }    
+
+        // display third most recent score
+        if (lineCount >= 5) {
+            score5.setText(lines[lineCount - 3]);
+        } else {
+            score5.setText("???");
+        }    
     }
 
     /**
@@ -32,6 +98,11 @@ public class Scores extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        score4 = new javax.swing.JLabel();
+        score5 = new javax.swing.JLabel();
+        score1 = new javax.swing.JLabel();
+        score2 = new javax.swing.JLabel();
+        score3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -60,25 +131,53 @@ public class Scores extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel6.setText("5)");
 
+        score4.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        score4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        score4.setText("???");
+
+        score5.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        score5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        score5.setText("???");
+
+        score1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        score1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        score1.setText("???");
+
+        score2.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        score2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        score2.setText("???");
+
+        score3.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        score3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        score3.setText("???");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
+                        .addContainerGap()
+                        .addComponent(jButton1)
+                        .addGap(34, 34, 34)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
                             .addComponent(jLabel2)
                             .addComponent(jLabel4)
                             .addComponent(jLabel5)
-                            .addComponent(jLabel6))))
-                .addGap(34, 34, 34)
-                .addComponent(jLabel1)
-                .addContainerGap(105, Short.MAX_VALUE))
+                            .addComponent(jLabel6))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(score4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(score5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(score1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(score2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(score3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(31, 31, 31))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -87,18 +186,30 @@ public class Scores extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jButton1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel2)))
-                .addGap(0, 0, 0)
-                .addComponent(jLabel3)
-                .addGap(0, 0, 0)
-                .addComponent(jLabel4)
-                .addGap(1, 1, 1)
-                .addComponent(jLabel5)
-                .addGap(0, 0, 0)
-                .addComponent(jLabel6)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jButton1)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(0, 0, 0)
+                        .addComponent(jLabel3)
+                        .addGap(0, 0, 0)
+                        .addComponent(jLabel4)
+                        .addGap(1, 1, 1)
+                        .addComponent(jLabel5)
+                        .addGap(0, 0, 0)
+                        .addComponent(jLabel6))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(score1)
+                        .addGap(0, 0, 0)
+                        .addComponent(score2)
+                        .addGap(0, 0, 0)
+                        .addComponent(score3)
+                        .addGap(1, 1, 1)
+                        .addComponent(score4)
+                        .addGap(0, 0, 0)
+                        .addComponent(score5)))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         pack();
@@ -157,5 +268,10 @@ public class Scores extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel score1;
+    private javax.swing.JLabel score2;
+    private javax.swing.JLabel score3;
+    private javax.swing.JLabel score4;
+    private javax.swing.JLabel score5;
     // End of variables declaration//GEN-END:variables
 }
