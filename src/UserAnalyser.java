@@ -106,7 +106,6 @@ public class UserAnalyser extends javax.swing.JFrame {
         });
 
         score.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        score.setText("jLabel6");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
