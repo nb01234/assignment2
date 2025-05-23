@@ -29,7 +29,7 @@ public class opener extends javax.swing.JFrame {
             e.printStackTrace();
         }
         
-        javax.swing.Timer timer = new javax.swing.Timer(1000, e -> {
+        javax.swing.Timer timer = new javax.swing.Timer(10, e -> {
             this.dispose(); // Properly close the opener
             new Menu().setVisible(true); // Then show the Menu
         });
