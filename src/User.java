@@ -16,6 +16,9 @@ public class User {
     private String name;
     private int age;
     private int score;
+    private int numberOfBreaks;
+    private int lengthOfBreaks;
+    private int timeInBed;
     private Time time;
     private static final int DEFAULT_SCORE = 0;
     private static int numPeople = 0;
@@ -26,10 +29,6 @@ public class User {
         this.time = time;
         this.score = DEFAULT_SCORE;
         numPeople++;
-    }
-    
-    public User() {
-        
     }
     
     public String getName() {
@@ -56,6 +55,30 @@ public class User {
         this.score = score;
     }
     
+    public int getNumberOfBreaks() {
+        return numberOfBreaks;
+    }
+    
+    public void setNumberOfBreaks(int numberOfBreaks) {
+        this.numberOfBreaks = numberOfBreaks;
+    }
+    
+    public int getLengthOfBreaks() {
+        return lengthOfBreaks;
+    }
+    
+    public void setLengthOfBreaks(int lengthOfBreaks) {
+        this.lengthOfBreaks = lengthOfBreaks;
+    }
+    
+    public int getTimeInBed() {
+        return timeInBed;
+    }
+    
+    public void setTimeInBed(int timeInBed) {
+        this.timeInBed = timeInBed;
+    }
+    
      public Time getTime() {
         return time;
     }
@@ -72,6 +95,7 @@ public class User {
         numPeople++;
     }
     
+    @Override
     public String toString() {
         return "Name: " + name + "Age: " + age; 
     }

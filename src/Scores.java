@@ -56,7 +56,7 @@ public class Scores extends javax.swing.JFrame {
             // split line by the comma
             line = lines[lineCount - 1].split(", ");
             
-            score1.setText("Name: " + line[0] + ", Age: " + line[1] + ", Age: " + line[1]);
+            score1.setText("Name: " + line[0] + ", Age: " + line[1]);
         } else {
             score1.setText("???");
         }

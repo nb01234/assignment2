@@ -221,24 +221,23 @@ public class UserAnalyser extends javax.swing.JFrame {
         int finalScore = 0;
         boolean invalid;
 
-        String getHours = hours.getText();
-        String getMinutes = minutes.getText();
-        String getSeconds = seconds.getText();
-        String getNumBreaks = numberOfBreaks.getText();
-        String getLengthBreaks = lengthOfBreaks.getText();
-        String getTimeBed = timeInBed.getText();
+        User user = new User();
+        Time time = new Time();
+        
+        time.setHours(Integer.parseInt(hours.getText()));
+        time.setMinutes(Integer.parseInt(minutes.getText()));
+        time.setSeconds(Integer.parseInt(seconds.getText()));
 
-        int userHours = Integer.parseInt(getHours);
-        int userMinutes = Integer.parseInt(getMinutes);
-        int userSeconds = Integer.parseInt(getSeconds);
-        int userNumBreaks = Integer.parseInt(getNumBreaks);
-        int userLengthBreaks = Integer.parseInt(getLengthBreaks);
-        int userTimeBed = Integer.parseInt(getTimeBed);
+        user.setTime(time);
 
-        int percent = userNumBreaks * userLengthBreaks / userHours;
+        user.setNumberOfBreaks(Integer.parseInt(numberOfBreaks.getText()));
+        user.setLengthOfBreaks(Integer.parseInt(lengthOfBreaks.getText()));
+        user.setTimeInBed(Integer.parseInt(timeInBed.getText()));
+
+        int percent = user.getNumberOfBreaks() * user.getLengthOfBreaks() / user.getTime().getHours();
         int partScore = 0;
         
-        if (userHours > 24 || userTimeBed > 12 || userTimeBed > userHours) {
+        if (user.getTime().getHours() > 24 || user.getTimeInBed() > 12 || user.getTimeInBed() > user.getTime().getHours()) {
             invalid = true;
         } else {
             invalid = false;
@@ -260,13 +259,13 @@ public class UserAnalyser extends javax.swing.JFrame {
         }
 
         //calculate score
-        int l = 10 - userHours + 5 - userTimeBed + partScore; // max score is 20, score can be negative
+        int l = 10 - user.getTime().getHours() + 5 - user.getTimeInBed() + partScore; // max score is 20, score can be negative
         finalScore = (int) Math.round(l); // round score and convert to an int
             
         
         try (FileWriter writer = new FileWriter("users.txt", true)) {
             if (!invalid) {
-                writer.write(userHours + ", " + userMinutes + ", " + userSeconds + ", " + finalScore);
+                writer.write(user.getTime().getHours() + ", " + user.getTime().getMinutes() + ", " + user.getTime().getSeconds() + ", " + finalScore);
                 score.setText(String.valueOf(finalScore));
             } else {
                 score.setText("Invalid input entered");
@@ -274,7 +273,6 @@ public class UserAnalyser extends javax.swing.JFrame {
         } catch (IOException ioException) {
             System.err.println("Java Exception: " + ioException);
         }
-  
 
     }//GEN-LAST:event_calculateActionPerformed
 

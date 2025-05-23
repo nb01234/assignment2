@@ -158,14 +158,15 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
         User user = new User();
         
-        String userName = name.getText();
-        String userAge = age.getText();
+        user.setName(name.getText());
+        user.setAge(Integer.parseInt(age.getText()));
+
         boolean student = studentCheck.isSelected();
         boolean worker = workerCheck.isSelected();
     
         try (FileWriter writer = new FileWriter("users.txt", true)) {
             writer.write("\n");
-            writer.write(userName + ", " + userAge + ", ");
+            writer.write(user.getName() + ", " + user.getAge() + ", ");
         } catch (IOException ioException) {
             System.err.println("Java Exception: " + ioException);
         }
