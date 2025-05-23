@@ -239,16 +239,63 @@ public class StudentAnalyser extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void calculateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calculateActionPerformed
-        // TODO add your handling code here:
-        String userHours = hours.getText();
-        String userMinutes = minutes.getText();
-        String userSeconds = seconds.getText();
+        int finalScore = 0;
+        boolean invalid;
+
+        String getHours = hours.getText();
+        String getMinutes = minutes.getText();
+        String getSeconds = seconds.getText();
+        String getNumBreaks = numberOfBreaks.getText();
+        String getLengthBreaks = lengthOfBreaks.getText();
+        String getTimeBed = timeInBed.getText();
+        String getHoursStudied = hoursStudying.getText();
+
+        int userHours = Integer.parseInt(getHours) - Integer.parseInt(getHoursStudied); // subtract study time from screen time
+        int userMinutes = Integer.parseInt(getMinutes);
+        int userSeconds = Integer.parseInt(getSeconds);
+        int userNumBreaks = Integer.parseInt(getNumBreaks);
+        int userLengthBreaks = Integer.parseInt(getLengthBreaks);
+        int userTimeBed = Integer.parseInt(getTimeBed);
+
+        int percent = userNumBreaks * userLengthBreaks / userHours;
+        int partScore = 0;
+        
+        if (userHours > 24 || userTimeBed > 12 || userTimeBed > userHours) {
+            invalid = true;
+        } else {
+            invalid = false;
+        }
+
+        // score out of 5 based on how much the user took breaks
+        if (percent < 0.02) {
+            partScore = 0;
+        } else if (percent < 0.04) {
+            partScore = 1;
+        } else if (percent < 0.06) {
+            partScore = 2;
+        } else if (percent < 0.08) {
+            partScore = 3;
+        } else if (percent < 0.1) {
+            partScore = 4;
+        } else {
+            partScore = 5;
+        }
+
+        //calculate score
+        int l = 10 - userHours + 5 - userTimeBed + partScore; // max score is 20, score can be negative
+        finalScore = (int) Math.round(l); // round score and convert to an int
+            
         
         try (FileWriter writer = new FileWriter("users.txt", true)) {
-            writer.write(userHours + ", " + userMinutes + ", " + userSeconds);
+            if (!invalid) {
+                writer.write(userHours + ", " + userMinutes + ", " + userSeconds + ", " + finalScore);
+                score.setText(String.valueOf(finalScore));
+            } else {
+                score.setText("Invalid input entered");
+            }
         } catch (IOException ioException) {
             System.err.println("Java Exception: " + ioException);
-        }      
+        }
     }//GEN-LAST:event_calculateActionPerformed
 
     /**

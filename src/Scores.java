@@ -46,11 +46,17 @@ public class Scores extends javax.swing.JFrame {
             }
         } catch (IOException ioException) {
             System.err.println("Java Exception: " + ioException);
-        }    
+        }
+        
+        // variable for the current line
+        String line[];
         
         // display most recent score
         if (lineCount >= 1) {
-            score1.setText(lines[lineCount - 1]);
+            // split line by the comma
+            line = lines[lineCount - 1].split(", ");
+            
+            score1.setText("Name: " + line[0] + ", Age: " + line[1] + ", Age: " + line[1]);
         } else {
             score1.setText("???");
         }
