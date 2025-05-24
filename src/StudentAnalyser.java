@@ -45,10 +45,10 @@ public class StudentAnalyser extends javax.swing.JFrame {
         timeInBed = new javax.swing.JTextField();
         numberOfBreaks = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        hoursStudying = new javax.swing.JTextField();
+        studyHours = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        score = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
+        score = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -79,13 +79,13 @@ public class StudentAnalyser extends javax.swing.JFrame {
         jLabel4.setText("Minutes:");
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel8.setText("# of Breaks");
+        jLabel8.setText("# of Breaks:");
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel9.setText("Length of Breaks");
+        jLabel9.setText("Length of Breaks:");
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel10.setText("Time in Bed");
+        jLabel10.setText("Time in Bed:");
 
         calculate.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         calculate.setText("Calculate");
@@ -96,23 +96,16 @@ public class StudentAnalyser extends javax.swing.JFrame {
         });
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel12.setText("Hours Studying");
+        jLabel12.setText("Hours Studying:");
 
-        hoursStudying.addActionListener(new java.awt.event.ActionListener() {
+        studyHours.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                hoursStudyingActionPerformed(evt);
+                studyHoursActionPerformed(evt);
             }
         });
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel11.setText("Score");
-
-        score.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        score.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                scoreActionPerformed(evt);
-            }
-        });
+        jLabel11.setText("Score:");
 
         jButton2.setText("Return");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -120,6 +113,8 @@ public class StudentAnalyser extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
+
+        score.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -132,7 +127,7 @@ public class StudentAnalyser extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(6, 6, 6)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(timeInBed, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
                             .addComponent(numberOfBreaks, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -140,9 +135,9 @@ public class StudentAnalyser extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel9)
                             .addComponent(jLabel12))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(hoursStudying, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(studyHours, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lengthOfBreaks, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(26, 26, 26))
                     .addGroup(layout.createSequentialGroup()
@@ -173,8 +168,8 @@ public class StudentAnalyser extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addComponent(jLabel11)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(score, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(score))
                     .addComponent(calculate))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -201,18 +196,18 @@ public class StudentAnalyser extends javax.swing.JFrame {
                     .addComponent(jLabel9)
                     .addComponent(lengthOfBreaks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(numberOfBreaks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(timeInBed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel12)
-                    .addComponent(hoursStudying, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(studyHours, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addComponent(calculate)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
-                    .addComponent(score, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(score))
                 .addContainerGap())
         );
 
@@ -223,13 +218,9 @@ public class StudentAnalyser extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_secondsActionPerformed
 
-    private void hoursStudyingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hoursStudyingActionPerformed
+    private void studyHoursActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studyHoursActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_hoursStudyingActionPerformed
-
-    private void scoreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scoreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_scoreActionPerformed
+    }//GEN-LAST:event_studyHoursActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
@@ -242,25 +233,25 @@ public class StudentAnalyser extends javax.swing.JFrame {
         int finalScore = 0;
         boolean invalid;
 
-        String getHours = hours.getText();
-        String getMinutes = minutes.getText();
-        String getSeconds = seconds.getText();
-        String getNumBreaks = numberOfBreaks.getText();
-        String getLengthBreaks = lengthOfBreaks.getText();
-        String getTimeBed = timeInBed.getText();
-        String getHoursStudied = hoursStudying.getText();
+        User student = new Student();
+        Time time = new Time();
+        
+        time.setHours(Integer.parseInt(hours.getText()));
+        time.setMinutes(Integer.parseInt(minutes.getText()));
+        time.setSeconds(Integer.parseInt(seconds.getText()));
 
-        int userHours = Integer.parseInt(getHours) - Integer.parseInt(getHoursStudied); // subtract study time from screen time
-        int userMinutes = Integer.parseInt(getMinutes);
-        int userSeconds = Integer.parseInt(getSeconds);
-        int userNumBreaks = Integer.parseInt(getNumBreaks);
-        int userLengthBreaks = Integer.parseInt(getLengthBreaks);
-        int userTimeBed = Integer.parseInt(getTimeBed);
+        student.setTime(time);
 
-        int percent = userNumBreaks * userLengthBreaks / userHours;
+        student.setNumberOfBreaks(Integer.parseInt(numberOfBreaks.getText()));
+        student.setLengthOfBreaks(Integer.parseInt(lengthOfBreaks.getText()));
+        student.setTimeInBed(Integer.parseInt(timeInBed.getText()));
+        ((Student) student).setStudyHours(Integer.parseInt(studyHours.getText()));
+
+
+        int percent = student.getNumberOfBreaks() * student.getLengthOfBreaks() / student.getTime().getHours();
         int partScore = 0;
         
-        if (userHours > 24 || userTimeBed > 12 || userTimeBed > userHours) {
+        if (student.getTime().getHours() > 24 || student.getTimeInBed() > 12 || student.getTimeInBed() > student.getTime().getHours()) {
             invalid = true;
         } else {
             invalid = false;
@@ -282,14 +273,15 @@ public class StudentAnalyser extends javax.swing.JFrame {
         }
 
         //calculate score
-        int l = 10 - userHours + 5 - userTimeBed + partScore; // max score is 20, score can be negative
+        int l = 10 - student.getTime().getHours() + 5 - student.getTimeInBed() + partScore; // max score is 20, score can be negative
         finalScore = (int) Math.round(l); // round score and convert to an int
             
         
         try (FileWriter writer = new FileWriter("users.txt", true)) {
             if (!invalid) {
-                writer.write(userHours + ", " + userMinutes + ", " + userSeconds + ", " + finalScore);
-                score.setText(String.valueOf(finalScore));
+                student.setScore(finalScore);
+                score.setText(""+student.getScore());   
+                writer.write(student.getTime().getHours() + ", " + student.getTime().getMinutes() + ", " + student.getTime().getSeconds() + ", " + ((Student) student).getStudyHours() + ", " + student.getScore());         
             } else {
                 score.setText("Invalid input entered");
             }
@@ -336,7 +328,6 @@ public class StudentAnalyser extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton calculate;
     private javax.swing.JTextField hours;
-    private javax.swing.JTextField hoursStudying;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -352,8 +343,9 @@ public class StudentAnalyser extends javax.swing.JFrame {
     private javax.swing.JTextField lengthOfBreaks;
     private javax.swing.JTextField minutes;
     private javax.swing.JTextField numberOfBreaks;
-    private javax.swing.JTextField score;
+    private javax.swing.JLabel score;
     private javax.swing.JTextField seconds;
+    private javax.swing.JTextField studyHours;
     private javax.swing.JTextField timeInBed;
     // End of variables declaration//GEN-END:variables
 }

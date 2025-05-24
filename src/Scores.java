@@ -22,12 +22,7 @@ public class Scores extends javax.swing.JFrame {
         // display most recent score
         if (users.size() >= 1) {
             User user1 = users.get(users.size() - 1);
-            score1.setText(user1.getName() + user1.getAge() + user1.getTime() + user1.getScore());
-            if(user1 instanceof Student student) {
-                score1.setText(user1.getName() + user1.getAge() + user1.getTime() + student.getStudyHours() + user1.getScore());
-            } else if(user1 instanceof Worker worker){
-                score1.setText(user1.getName() + user1.getAge() + user1.getTime() + worker.getWorkHours() + user1.getScore());
-            }
+            score1.setText(user1.toString());
         } else {
             score1.setText("???");
         }
@@ -35,11 +30,11 @@ public class Scores extends javax.swing.JFrame {
         // display second most recent score
         if (users.size() >= 2) {
             User user2 = users.get(users.size() - 2);
-            score2.setText(user2.getName() + user2.getAge() + user2.getTime() + user2.getScore());
+            score2.setText(user2.toString());
             if(user2 instanceof Student student) {
-                score2.setText(user2.getName() + user2.getAge() + user2.getTime() + student.getStudyHours() + user2.getScore());
+                score2.setText(user2.toString());
             } else if(user2 instanceof Worker worker){
-                score2.setText(user2.getName() + user2.getAge() + user2.getTime() + worker.getWorkHours() + user2.getScore());
+                score2.setText(user2.toString());
             }
         } else {
             score2.setText("???");
@@ -48,24 +43,24 @@ public class Scores extends javax.swing.JFrame {
         // display third most recent score
         if (users.size() >= 3) {
             User user3 = users.get(users.size() - 3);
-            score3.setText(user3.getName() + user3.getAge() + user3.getTime() + user3.getScore());
+            score3.setText(user3.toString());
             if(user3 instanceof Student student) {
-                score3.setText(user3.getName() + user3.getAge() + user3.getTime() + student.getStudyHours() + user3.getScore());
+                score3.setText(user3.toString() + ((Student) student).toString());
             } else if(user3 instanceof Worker worker){
-                score3.setText(user3.getName() + user3.getAge() + user3.getTime() + worker.getWorkHours() + user3.getScore());
+                score3.setText(user3.toString() + ((Worker) worker).toString());
             }
         } else {
             score3.setText("???");
-        } 
+        }
 
         // display fourth most recent score
         if (users.size() >= 4) {
             User user4 = users.get(users.size() - 4);
-            score4.setText(user4.getName() + user4.getAge() + user4.getTime() + user4.getScore());
+            score4.setText(user4.toString());
             if(user4 instanceof Student student) {
-                score4.setText(user4.getName() + user4.getAge() + user4.getTime() + student.getStudyHours() + user4.getScore());
+                score4.setText(user4.toString() + ((Student) student).toString());
             } else if(user4 instanceof Worker worker){
-                score4.setText(user4.getName() + user4.getAge() + user4.getTime() + worker.getWorkHours() + user4.getScore());
+                score4.setText(user4.toString() + ((Worker) worker).toString());
             }
         } else {
             score4.setText("???");
@@ -74,11 +69,11 @@ public class Scores extends javax.swing.JFrame {
         // display fifth most recent score
         if (users.size() >= 5) {
             User user5 = users.get(users.size() - 5);
-            score5.setText(user5.getName() + user5.getAge() + user5.getTime() + user5.getScore());
+            score5.setText(user5.toString());
             if(user5 instanceof Student student) {
-                score5.setText(user5.getName() + user5.getAge() + user5.getTime() + student.getStudyHours() + user5.getScore());
+                score5.setText(user5.toString() + ((Student) student).toString());
             } else if(user5 instanceof Worker worker){
-                score5.setText(user5.getName() + user5.getAge() + user5.getTime() + worker.getWorkHours() + user5.getScore());
+                score5.setText(user5.toString() + ((Worker) worker).toString());
             }
         } else {
             score5.setText("???");

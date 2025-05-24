@@ -13,35 +13,27 @@ import java.util.ArrayList;
  * @author 
  */
 public class Student extends User {
-    private int score;
-    private static final int DEFAULT_SCORE = 0;
-    private double studyHours = 0;
+    private int studyHours;
     
-    public Student(String name, int age, double studyHours, Time time) {
-        super(name, age, time);
-        this.score = DEFAULT_SCORE;
+    public Student(String name, int age, int studyHours, Time time, int score) {
+        super(name, age, time, score);
         this.studyHours = studyHours;
     }
     
-    public double getStudyHours() {
+    public Student() {
+    }
+    
+    public int getStudyHours() {
         return studyHours;
     }
     
-    public void setStudyHours(double studyHours) {
+    public void setStudyHours(int studyHours) {
         this.studyHours = studyHours;
-    }
-    
-    public int getScore() {
-        return score;
-    }
-    
-    public void setScore(int score) {
-        this.score = score;
     }
     
     @Override
     public String toString() {
-        return "Name: " + getName() + "Age: " + getAge() + "Daily Study Hours: " + getStudyHours(); 
+        return super.toString() + " " + studyHours; 
     }
     
     public static ArrayList<User> readFromFile(String fileName) {
@@ -49,22 +41,20 @@ public class Student extends User {
 
        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
           String line;
-          int i = 0;
           while ((line = reader.readLine()) != null) {
-            String data[] = line.split(",");
+            String data[] = line.split(", ");
             String name = data[0];
             int age = Integer.parseInt(data[1]);
-
-            String[] timeParts = data[2].split(",");
-            int hours = Integer.parseInt(timeParts[0]);
-            int minutes = Integer.parseInt(timeParts[1]);
-            int seconds = Integer.parseInt(timeParts[2]); 
+            int hours = Integer.parseInt(data[2]);
+            int minutes = Integer.parseInt(data[3]);
+            int seconds = Integer.parseInt(data[4]); 
             Time time = new Time(hours, minutes, seconds);
             
-            double studyHours = Double.parseDouble(data[3]);
+            int studyHours = Integer.parseInt(data[5]);
+            
+            int score = Integer.parseInt(data[6]);
 
-            users.add(new Student(name, age, studyHours, time));
-            i++;
+            users.add(new Student(name, age, studyHours, time, score));
           }
       } catch (IOException ioException) {
           System.out.println("Java Exception: " + ioException);

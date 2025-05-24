@@ -20,14 +20,13 @@ public class User {
     private int lengthOfBreaks;
     private int timeInBed;
     private Time time;
-    private static final int DEFAULT_SCORE = 0;
     private static int numPeople = 0;
     
-    public User(String name, int age, Time time) {
+    public User(String name, int age, Time time, int score) {
         this.name = name;
         this.age = age;
         this.time = time;
-        this.score = DEFAULT_SCORE;
+        this.score = score;
         numPeople++;
     }
     
@@ -101,7 +100,7 @@ public class User {
     
     @Override
     public String toString() {
-        return "Name: " + name + "Age: " + age; 
+        return name + " " + age + " " + time + " " + score; 
     }
     
     public static ArrayList<User> readFromFile(String fileName) {
@@ -110,10 +109,7 @@ public class User {
        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
           String line;
           while ((line = reader.readLine()) != null) {
-            String data[] = line.split(",");
-            if (data.length < 5) {
-                continue;
-            }
+            String data[] = line.split(", ");
             String name = data[0];
             int age = Integer.parseInt(data[1]);
             int hours = Integer.parseInt(data[2]);
@@ -122,7 +118,9 @@ public class User {
             
             Time time = new Time(hours, minutes, seconds);
             
-            users.add(new User(name, age, time));            
+            int score = Integer.parseInt(data[5]);
+            
+            users.add(new User(name, age, time, score));            
           }
       } catch (IOException ioException) {
           System.out.println("Java Exception: " + ioException);

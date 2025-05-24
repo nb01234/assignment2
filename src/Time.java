@@ -23,17 +23,7 @@ public class Time {
         this.mins = 0;
         this.secs = 0;
     }
-    public int getHours(){
-        if ((secs % 60) > 30) {
-            mins = mins + (secs / 60) + 1;
-        } else {
-            mins = mins + (secs / 60);
-        }
-        if ((mins % 60) > 30) {
-            hours = hours +(mins / 60) + 1;
-        } else {
-            hours = hours + (mins / 60);
-        }
+    public int getHours() {
         return hours;
     }
     
@@ -42,12 +32,6 @@ public class Time {
     }
     
     public int getMinutes(){
-        if ((secs % 60) > 30){
-            mins = mins+(secs / 60) + 1;
-        } else {
-            mins = mins + (secs / 60);
-        }
-        mins = hours * 60;
         return mins;
     }
     
@@ -56,7 +40,6 @@ public class Time {
     }
     
     public int getSeconds(){
-        secs =(mins + (hours * 60)) * 60;
         return secs;
     }
     
@@ -66,6 +49,6 @@ public class Time {
     
     @Override
     public String toString(){
-        return hours + ";" + mins + ";" + secs;
+        return hours + ":" + mins + ":" + secs;
     }
 }
