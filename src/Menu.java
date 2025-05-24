@@ -165,7 +165,6 @@ public class Menu extends javax.swing.JFrame {
         boolean worker = workerCheck.isSelected();
     
         try (FileWriter writer = new FileWriter("users.txt", true)) {
-            writer.write("\n");
             writer.write(user.getName() + ", " + user.getAge() + ", ");
         } catch (IOException ioException) {
             System.err.println("Java Exception: " + ioException);

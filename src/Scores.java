@@ -1,6 +1,4 @@
-import java.io.File;
-import java.io.IOException;
-import java.util.Scanner;
+import java.util.ArrayList;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -19,73 +17,72 @@ public class Scores extends javax.swing.JFrame {
     public Scores() {
         initComponents();
         
-        // initialize line count
-        int lineCount = 0;
-
-        // count number of lines
-        try {
-            Scanner fileInput = new Scanner(new File("users.txt"));
-            while (fileInput.hasNextLine()) {
-                fileInput.nextLine();
-                lineCount++;
-            }
-        } catch (IOException ioException) {
-            System.err.println("Java Exception: " + ioException);
-        } 
-        
-        // initalize lines array
-        String[] lines = new String [lineCount];
-        int index = 0;
-        
-        // add values from scores file into the array
-        try {
-            Scanner fileInput = new Scanner(new File("users.txt"));
-            while (fileInput.hasNextLine()) {
-                lines[index] = fileInput.nextLine();
-                index++;
-            }
-        } catch (IOException ioException) {
-            System.err.println("Java Exception: " + ioException);
-        }
-        
-        // variable for the current line
-        String line[];
+        ArrayList<User> users = User.readFromFile("users.txt");
         
         // display most recent score
-        if (lineCount >= 1) {
-            // split line by the comma
-            line = lines[lineCount - 1].split(", ");
-            
-            score1.setText("Name: " + line[0] + ", Age: " + line[1]);
+        if (users.size() >= 1) {
+            User user1 = users.get(users.size() - 1);
+            score1.setText(user1.getName() + user1.getAge() + user1.getTime() + user1.getScore());
+            if(user1 instanceof Student student) {
+                score1.setText(user1.getName() + user1.getAge() + user1.getTime() + student.getStudyHours() + user1.getScore());
+            } else if(user1 instanceof Worker worker){
+                score1.setText(user1.getName() + user1.getAge() + user1.getTime() + worker.getWorkHours() + user1.getScore());
+            }
         } else {
             score1.setText("???");
         }
+        
         // display second most recent score
-        if (lineCount >= 2) {
-            score2.setText(lines[lineCount - 2]);
+        if (users.size() >= 2) {
+            User user2 = users.get(users.size() - 2);
+            score2.setText(user2.getName() + user2.getAge() + user2.getTime() + user2.getScore());
+            if(user2 instanceof Student student) {
+                score2.setText(user2.getName() + user2.getAge() + user2.getTime() + student.getStudyHours() + user2.getScore());
+            } else if(user2 instanceof Worker worker){
+                score2.setText(user2.getName() + user2.getAge() + user2.getTime() + worker.getWorkHours() + user2.getScore());
+            }
         } else {
-            score2.setText("");
+            score2.setText("???");
         }
-        // display third most recent score
-        if (lineCount >= 3) {
-            score3.setText(lines[lineCount - 3]);
-        } else {
-            score3.setText("");
-        }    
 
         // display third most recent score
-        if (lineCount >= 4) {
-            score4.setText(lines[lineCount - 4]);
+        if (users.size() >= 3) {
+            User user3 = users.get(users.size() - 3);
+            score3.setText(user3.getName() + user3.getAge() + user3.getTime() + user3.getScore());
+            if(user3 instanceof Student student) {
+                score3.setText(user3.getName() + user3.getAge() + user3.getTime() + student.getStudyHours() + user3.getScore());
+            } else if(user3 instanceof Worker worker){
+                score3.setText(user3.getName() + user3.getAge() + user3.getTime() + worker.getWorkHours() + user3.getScore());
+            }
         } else {
-            score4.setText("");
-        }    
+            score3.setText("???");
+        } 
 
-        // display third most recent score
-        if (lineCount >= 5) {
-            score5.setText(lines[lineCount - 5]);
+        // display fourth most recent score
+        if (users.size() >= 4) {
+            User user4 = users.get(users.size() - 4);
+            score4.setText(user4.getName() + user4.getAge() + user4.getTime() + user4.getScore());
+            if(user4 instanceof Student student) {
+                score4.setText(user4.getName() + user4.getAge() + user4.getTime() + student.getStudyHours() + user4.getScore());
+            } else if(user4 instanceof Worker worker){
+                score4.setText(user4.getName() + user4.getAge() + user4.getTime() + worker.getWorkHours() + user4.getScore());
+            }
         } else {
-            score5.setText("");
-        }    
+            score4.setText("???");
+        }
+        
+        // display fifth most recent score
+        if (users.size() >= 5) {
+            User user5 = users.get(users.size() - 5);
+            score5.setText(user5.getName() + user5.getAge() + user5.getTime() + user5.getScore());
+            if(user5 instanceof Student student) {
+                score5.setText(user5.getName() + user5.getAge() + user5.getTime() + student.getStudyHours() + user5.getScore());
+            } else if(user5 instanceof Worker worker){
+                score5.setText(user5.getName() + user5.getAge() + user5.getTime() + worker.getWorkHours() + user5.getScore());
+            }
+        } else {
+            score5.setText("???");
+        }
     }
 
     /**

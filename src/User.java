@@ -31,6 +31,10 @@ public class User {
         numPeople++;
     }
     
+    public User() {
+        
+    }
+    
     public String getName() {
         return name;
     }
@@ -105,21 +109,20 @@ public class User {
 
        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
           String line;
-          int i = 0;
           while ((line = reader.readLine()) != null) {
             String data[] = line.split(",");
+            if (data.length < 5) {
+                continue;
+            }
             String name = data[0];
             int age = Integer.parseInt(data[1]);
+            int hours = Integer.parseInt(data[2]);
+            int minutes = Integer.parseInt(data[3]);
+            int seconds = Integer.parseInt(data[4]); 
             
-            String[] timeParts = data[2].split(",");
-            int hours = Integer.parseInt(timeParts[0]);
-            int minutes = Integer.parseInt(timeParts[1]);
-            int seconds = Integer.parseInt(timeParts[2]); 
             Time time = new Time(hours, minutes, seconds);
             
-            users.add(new User(name, age, time));
-            
-            i++;
+            users.add(new User(name, age, time));            
           }
       } catch (IOException ioException) {
           System.out.println("Java Exception: " + ioException);
