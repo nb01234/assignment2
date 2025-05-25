@@ -11,18 +11,22 @@ public class Time {
     private int hours;
     private int mins;
     private int secs;
+    public static final int MAX_HOURS_PER_DAY = 24;
     
-    public Time(int hours, int mins, int secs){
+    // Primary Constructor
+    public Time(int hours, int mins, int secs) {
         this.hours = hours;
         this.mins = mins;
         this.secs = secs;
     }
     
-    public Time(){
+    // Default constructor
+    public Time() {
         this.hours = 0;
         this.mins = 0;
         this.secs = 0;
     }
+    
     public int getHours() {
         return hours;
     }

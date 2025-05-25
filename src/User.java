@@ -13,6 +13,7 @@ import java.util.ArrayList;
  * @author 342468766
  */
 public class User {
+    // Initialize attributes
     private String name;
     private int age;
     private int score;
@@ -20,16 +21,18 @@ public class User {
     private int lengthOfBreaks;
     private int timeInBed;
     private Time time;
-    private static int numPeople = 0;
+    private static int numberOfUsers = 0;
     
+    // Primary constructor
     public User(String name, int age, Time time, int score) {
         this.name = name;
         this.age = age;
         this.time = time;
         this.score = score;
-        numPeople++;
+        numberOfUsers++;
     }
     
+    // Default constructor
     public User() {
         
     }
@@ -90,12 +93,8 @@ public class User {
         this.time = time;
     }
     
-    public int getNumPeople() {
-        return numPeople;
-    }
-    
-    protected static void increment() {
-        numPeople++;
+    public static int getNumberOfUsers() {
+        return numberOfUsers;
     }
     
     @Override
@@ -103,10 +102,17 @@ public class User {
         return name + " " + age + " " + time + " " + score; 
     }
     
+    /**
+     * This method is used to convert the data from the file into the array list
+     * @param fileName is the file with the user data
+     * @return the array list of user data
+     */
     public static ArrayList<User> readFromFile(String fileName) {
 
+       // Create new array list
        ArrayList<User> users = new ArrayList<>();
         
+       // Read user data and store objects into array list
        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
           String line;
           while ((line = reader.readLine()) != null) {
@@ -120,6 +126,7 @@ public class User {
 
             Time time = new Time(hours, minutes, seconds);
 
+            // Check type of user data
             if(type.equals("student")) {
                 int studyHours = Integer.parseInt(data[6]);
                 int score = Integer.parseInt(data[7]);
@@ -136,6 +143,7 @@ public class User {
       } catch (IOException ioException) {
           System.out.println("Java Exception: " + ioException);
       }
+        // Return array list
         return users;
     }
 }

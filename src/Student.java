@@ -1,8 +1,3 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -10,16 +5,19 @@ import java.util.ArrayList;
 
 /**
  *
- * @author 
+ * @author 342468766
  */
 public class Student extends User {
+    // Initialize attributes
     private int studyHours;
     
+    // Primary constructor
     public Student(String name, int age, int studyHours, Time time, int score) {
         super(name, age, time, score);
         this.studyHours = studyHours;
     }
     
+    // Default constructor
     public Student() {
     }
     

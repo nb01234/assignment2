@@ -223,41 +223,48 @@ public class WorkerAnalyser extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        // Hide frame
         this.setVisible(false);
-
+        
+        // Display menu frame
         new Menu().setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void calculateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calculateActionPerformed
         // TODO add your handling code here:
+        // Initialize final score
         int finalScore = 0;
         boolean invalid;
 
+        // Create user and time object
         User worker = new Worker();
         Time time = new Time();
         
+        // Set time
         time.setHours(Integer.parseInt(hours.getText()));
         time.setMinutes(Integer.parseInt(minutes.getText()));
         time.setSeconds(Integer.parseInt(seconds.getText()));
 
         worker.setTime(time);
 
+        // Set user data
         worker.setNumberOfBreaks(Integer.parseInt(numberOfBreaks.getText()));
         worker.setLengthOfBreaks(Integer.parseInt(lengthOfBreaks.getText()));
         worker.setTimeInBed(Integer.parseInt(timeInBed.getText()));
         ((Worker) worker).setWorkHours(Integer.parseInt(workHours.getText()));
 
-
+        // Calculate user score based on breaks, time in bed and screen time
         int percent = worker.getNumberOfBreaks() * worker.getLengthOfBreaks() / worker.getTime().getHours();
         int partScore = 0;
         
-        if (worker.getTime().getHours() > 24 || worker.getTimeInBed() > 12 || worker.getTimeInBed() > worker.getTime().getHours()) {
+        // Error check
+        if (worker.getTime().getHours() > Time.MAX_HOURS_PER_DAY || worker.getTimeInBed() > 12 || worker.getTimeInBed() > worker.getTime().getHours()) {
             invalid = true;
         } else {
             invalid = false;
         }
 
-        // score out of 5 based on how much the user took breaks
+        // Calculate user score based on breaks, time in bed and screen time
         if (percent < 0.02) {
             partScore = 0;
         } else if (percent < 0.04) {
@@ -272,11 +279,10 @@ public class WorkerAnalyser extends javax.swing.JFrame {
             partScore = 5;
         }
 
-        //calculate score
         int l = 10 - worker.getTime().getHours() + 5 - worker.getTimeInBed() + partScore; // max score is 20, score can be negative
         finalScore = (int) Math.round(l); // round score and convert to an int
             
-        
+        // Write user data to file
         try (FileWriter writer = new FileWriter("users.txt", true)) {
             if (!invalid) {
                 worker.setScore(finalScore);

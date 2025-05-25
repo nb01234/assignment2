@@ -1,3 +1,4 @@
+// Import packages
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -8,7 +9,7 @@ import java.io.IOException;
 
 /**
  *
- * @author 342628146
+ * @author 342468766
  */
 public class Menu extends javax.swing.JFrame {
     /**
@@ -156,8 +157,10 @@ public class Menu extends javax.swing.JFrame {
 
     private void startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startActionPerformed
         // TODO add your handling code here:
+        // Create new user object
         User user = new User();
         
+        // Determine type of analyser used
         String type;
 
         if (studentCheck.isSelected()) {
@@ -171,23 +174,28 @@ public class Menu extends javax.swing.JFrame {
             new UserAnalyser().setVisible(true);
         }
         
+        // Set name and age values
         user.setName(name.getText());
         user.setAge(Integer.parseInt(age.getText()));
     
+        // Write user data into file
         try (FileWriter writer = new FileWriter("users.txt", true)) {
             writer.write(type + ", " + user.getName() + ", " + user.getAge() + ", ");
         } catch (IOException ioException) {
             System.err.println("Java Exception: " + ioException);
         }
         
+        // Hide frame
         this.setVisible(false);
 
     }//GEN-LAST:event_startActionPerformed
 
     private void scoreboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scoreboardActionPerformed
         // TODO add your handling code here:
+        // Hide frame
         this.setVisible(false);
         
+        // Display scores frame
         new Scores().setVisible(true);
     }//GEN-LAST:event_scoreboardActionPerformed
 
