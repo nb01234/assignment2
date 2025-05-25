@@ -281,7 +281,7 @@ public class StudentAnalyser extends javax.swing.JFrame {
             if (!invalid) {
                 student.setScore(finalScore);
                 score.setText(""+student.getScore());   
-                writer.write(student.getTime().getHours() + ", " + student.getTime().getMinutes() + ", " + student.getTime().getSeconds() + ", " + ((Student) student).getStudyHours() + ", " + student.getScore());         
+                writer.write(student.getTime().getHours() + ", " + student.getTime().getMinutes() + ", " + student.getTime().getSeconds() + ", " + ((Student) student).getStudyHours() + ", " + student.getScore() + "\n");         
             } else {
                 score.setText("Invalid input entered");
             }

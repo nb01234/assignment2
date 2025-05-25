@@ -158,27 +158,30 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
         User user = new User();
         
+        String type;
+
+        if (studentCheck.isSelected()) {
+            type = "student";
+            new StudentAnalyser().setVisible(true);
+        } else if (workerCheck.isSelected()) {
+            type = "worker";
+            new WorkerAnalyser().setVisible(true);
+        } else {
+            type = "user";
+            new UserAnalyser().setVisible(true);
+        }
+        
         user.setName(name.getText());
         user.setAge(Integer.parseInt(age.getText()));
-
-        boolean student = studentCheck.isSelected();
-        boolean worker = workerCheck.isSelected();
     
         try (FileWriter writer = new FileWriter("users.txt", true)) {
-            writer.write(user.getName() + ", " + user.getAge() + ", ");
+            writer.write(type + ", " + user.getName() + ", " + user.getAge() + ", ");
         } catch (IOException ioException) {
             System.err.println("Java Exception: " + ioException);
         }
         
         this.setVisible(false);
-        
-        if (student) {
-            new StudentAnalyser().setVisible(true);
-        } else if (worker) {
-            new WorkerAnalyser().setVisible(true);
-        } else {
-            new UserAnalyser().setVisible(true);
-        }
+
     }//GEN-LAST:event_startActionPerformed
 
     private void scoreboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scoreboardActionPerformed

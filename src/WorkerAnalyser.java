@@ -281,7 +281,7 @@ public class WorkerAnalyser extends javax.swing.JFrame {
             if (!invalid) {
                 worker.setScore(finalScore);
                 score.setText(""+worker.getScore());
-                writer.write(worker.getTime().getHours() + ", " + worker.getTime().getMinutes() + ", " + worker.getTime().getSeconds() + ", " + ((Worker) worker).getWorkHours() + ", " + worker.getScore());
+                writer.write(worker.getTime().getHours() + ", " + worker.getTime().getMinutes() + ", " + worker.getTime().getSeconds() + ", " + ((Worker) worker).getWorkHours() + ", " + worker.getScore() + "\n");
             } else {
                 score.setText("Invalid input entered");
             }

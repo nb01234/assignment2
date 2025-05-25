@@ -265,7 +265,7 @@ public class UserAnalyser extends javax.swing.JFrame {
             if (!invalid) {
                 user.setScore(finalScore);
                 score.setText(""+user.getScore());
-                writer.write(user.getTime().getHours() + ", " + user.getTime().getMinutes() + ", " + user.getTime().getSeconds() + ", " + user.getScore());
+                writer.write(user.getTime().getHours() + ", " + user.getTime().getMinutes() + ", " + user.getTime().getSeconds() + ", " + user.getScore() + "\n");
             } else {
                 score.setText("Invalid input entered");
             }

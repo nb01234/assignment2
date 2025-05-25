@@ -104,23 +104,34 @@ public class User {
     }
     
     public static ArrayList<User> readFromFile(String fileName) {
-       ArrayList <User> users = new ArrayList<>();
 
+       ArrayList<User> users = new ArrayList<>();
+        
        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
           String line;
           while ((line = reader.readLine()) != null) {
             String data[] = line.split(", ");
-            String name = data[0];
-            int age = Integer.parseInt(data[1]);
-            int hours = Integer.parseInt(data[2]);
-            int minutes = Integer.parseInt(data[3]);
-            int seconds = Integer.parseInt(data[4]); 
-            
+            String type = data[0];
+            String name = data[1];
+            int age = Integer.parseInt(data[2]);
+            int hours = Integer.parseInt(data[3]);
+            int minutes = Integer.parseInt(data[4]);
+            int seconds = Integer.parseInt(data[5]); 
+
             Time time = new Time(hours, minutes, seconds);
-            
-            int score = Integer.parseInt(data[5]);
-            
-            users.add(new User(name, age, time, score));            
+
+            if(type.equals("student")) {
+                int studyHours = Integer.parseInt(data[6]);
+                int score = Integer.parseInt(data[7]);
+                users.add(new Student(name, age, studyHours, time, score));
+            } else if(type.equals("worker")) {
+                int workHours = Integer.parseInt(data[6]);
+                int score = Integer.parseInt(data[7]);
+                users.add(new Worker(name, age, workHours, time, score));
+            } else {
+                int score = Integer.parseInt(data[6]);
+                users.add(new User(name, age, time, score));   
+            }
           }
       } catch (IOException ioException) {
           System.out.println("Java Exception: " + ioException);
