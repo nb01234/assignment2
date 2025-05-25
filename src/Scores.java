@@ -20,16 +20,17 @@ public class Scores extends javax.swing.JFrame {
         
         // Read file
         ArrayList<User> users = User.readFromFile("users.txt");
-
+        
         // Update number of users
         userCount.setText(""+User.getNumberOfUsers());
+
         
         // Display most recent score
         if (users.size() >= 1) {
             User user1 = users.get(users.size() - 1);
             if(user1 instanceof Student student) {
                 score1.setText(student.toString());
-            } else if(user1 instanceof Worker worker){
+            } else if(user1 instanceof Worker worker) {
                 score1.setText(worker.toString());
             } else {
                 score1.setText(user1.toString());

@@ -29,7 +29,6 @@ public class User {
         this.age = age;
         this.time = time;
         this.score = score;
-        numberOfUsers++;
     }
     
     // Default constructor
@@ -97,6 +96,10 @@ public class User {
         return numberOfUsers;
     }
     
+    public static void setNumberOfUsers(int count) {
+        numberOfUsers = count;
+    }
+    
     @Override
     public String toString() {
         return name + " " + age + " " + time + " " + score; 
@@ -139,6 +142,9 @@ public class User {
                 int score = Integer.parseInt(data[6]);
                 users.add(new User(name, age, time, score));   
             }
+            
+            User.setNumberOfUsers(users.size());
+            
           }
       } catch (IOException ioException) {
           System.out.println("Java Exception: " + ioException);
